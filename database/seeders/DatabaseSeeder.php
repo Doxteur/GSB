@@ -14,5 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        // Use NoteSeeder
+        for ($i = 0; $i < 10; $i++) {
+            $this->call(NoteSeeder::class);
+        }
     }
 }
