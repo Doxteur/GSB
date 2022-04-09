@@ -47,9 +47,19 @@
                             <span class="ml-3">Médicaments</span>
                         </a>
                     </li>
+                    <hr>
+                    <li>
+                        <a href="{{ route('logout') }}"
+                            class="text-base text-gray-600 font-normal rounded-xl flex items-center p-2 hover:bg-blue-100 group">
+                            <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+                            <span class="ml-3">Se Déconnecter</span>
+                        </a>
+                    </li>
 
                 </ul>
 
+
+                
             </div>
         </div>
     </div>

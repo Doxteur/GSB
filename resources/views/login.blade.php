@@ -22,25 +22,30 @@
                     </div>
                     <div class="space-y-5">
                         <div class="space-y-2">
-                            <label class="text-sm font-medium text-gray-700 tracking-wide">Email</label>
-                            <input
+                            <form action="{{ route('checkLogin') }}" method="POST">
+                                @csrf
+                                <label class="text-sm font-medium text-gray-700 tracking-wide">Nom</label>
+                                <input
                                 class=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-blue-400"
-                                type="" placeholder="mail@gmail.com">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="mb-5 text-sm font-medium text-gray-700 tracking-wide">
-                                Mot de passe
-                            </label>
-                            <input
+                                type="text" placeholder="Nom" name="LoginName">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="mb-5 text-sm font-medium text-gray-700 tracking-wide">
+                                    Mot de passe
+                                </label>
+                                <input
                                 class="w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-blue-400"
-                                type="" placeholder="Entrer un mot de passe">
-                        </div>
-                      
-                        <div>
-                            <button type="submit"
+                                type="text" placeholder="Entrer un mot de passe" name="LoginPassword">
+                                {{-- Get error message --}}
+                            </div>
+                            <span class="text-red-600">{{ Request::get('error') }}</span>
+                            
+                            <div>
+                                <button type="submit"
                                 class="w-full flex justify-center bg-blue-400  hover:bg-blue-800 text-gray-100 p-3  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500">
                                 Se connecter
                             </button>
+                        </form>
                         </div>
                     </div>
                     <div>

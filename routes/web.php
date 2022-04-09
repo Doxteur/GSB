@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PraticienController;
 use Illuminate\Support\Facades\Route;
@@ -18,23 +19,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
-Route::get('/login',function(){
     return view('login');
 });
 
+
+// Login route
+Route::get('/login',function(){
+    return view('login');
+})->name('login');
+
+Route::post('/login',[AuthController::class,'checklogin'])->name('checkLogin');
+Route::get('/logout',[AuthController::class,'logout'])->name('logout');
+
+
 // Dashboard Route
-Route::get('/dashboard', [NoteController::class, 'index'])->name('dashboard');
-Route::post('/dashboard', [NoteController::class, 'getByPraticien'])->name('getByPraticien');
+Route::get('/dashboard', [NoteController::class, 'index'])->name('dashboard')->middleware('checkAuth');;
+Route::post('/dashboard', [NoteController::class, 'getByPraticien'])->name('getByPraticien')->middleware('checkAuth');;
 
 
 // Praticien Route
-Route::get('/praticien', [PraticienController::class, 'index'])->name('praticien');
-Route::post('/praticien', [PraticienController::class, 'getByPraticienName'])->name('getByPraticienName');
+Route::get('/praticien', [PraticienController::class, 'index'])->name('praticien')->middleware('checkAuth');;
+Route::post('/praticien', [PraticienController::class, 'getByPraticienName'])->name('getByPraticienName')->middleware('checkAuth');;
 
 
 Route::get('test',function(){

@@ -23,7 +23,8 @@
                     <span class="self-center whitespace-nowrap"><img src=" {{ asset('images/logo_gsb.png') }}"
                             alt="" class="w-20"></span>
                 </a>
-                <form action="#" method="GET" class="hidden lg:block lg:pl-32">
+                <form action="{{ route('getByPraticienName') }}" method="POST" class="hidden lg:block lg:pl-32">
+                    @csrf   
                     <label for="topbar-search" class="sr-only">Chercher</label>
                     <div class="mt-1 relative lg:w-64">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -34,7 +35,7 @@
                                     clip-rule="evenodd"></path>
                             </svg>
                         </div>
-                        <input type="text" name="email" id="topbar-search"
+                        <input type="text" name="praName" id="topbar-search"
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-10 p-2.5"
                             placeholder="Chercher un praticien">
                     </div>
